@@ -1,0 +1,62 @@
+.header{
+    border: 1px solid #dedede;
+    height: 60px;
+    margin-bottom: 10px;
+}
+.menu{
+    border: 1px solid #dedede;
+    height: 50px;
+    margin-bottom: 10px;
+}
+.menu>ul{
+    
+}
+.menu>ul>li{
+    display: inline-block;
+    cursor: pointer;
+    height: 50px;
+    line-height: 50px;
+    margin-right: 5px;
+    padding: 0 10px;
+    text-align: center;
+    border: 1px solid #dedede;
+}
+.menu>ul>li.active{
+    background-color: #dedede;
+}
+
+.sidebar{
+    border: 1px solid #dedede;
+    float: left;
+    /*width: 200px;*/
+    height: 800px;
+}
+.sidebar>ul{
+    display: none;
+}
+.sidebar>ul>li>a{
+    display: block;
+    /*background-color: #dedede;*/
+    padding: 0 10px;
+    border: 1px solid #dedede;
+    height: 30px;
+    line-height: 30px;
+    text-indent: 10px;
+    margin-bottom: 5px;
+}
+.sidebar>ul>li>a.active{
+    background-color: #dedede;
+}
+
+.main{
+    border: 1px solid #dedede;
+    float: right;
+    /*width: 750px;*/
+    height: 800px;
+    margin-bottom: 10px;
+}
+.footer{
+    border: 1px solid #dedede;
+    clear: both;
+    height: 100px;
+}

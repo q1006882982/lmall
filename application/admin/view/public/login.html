@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {include file="public/_meta"}
+    <link rel="stylesheet" href="M_ADMIN_STATIC/css/form.css">
+    <title>login</title>
+</head>
+<body>
+<div class="container">
+    <form action="" class="mform">
+        <p>
+            <span>username:</span>
+            <input type="text" name="username" class="input-text">
+        </p>
+        <p>
+            <span>password:</span>
+            <input type="password" name="password" class="input-text">
+        </p>
+        <p>
+            <span>validate_code:</span>
+            <input type="text" name="validate_code" class="input-text">
+        </p>
+        <p>
+            <img class="pointer" src="{:captcha_src()}" alt="captcha" onclick="this.src='{:captcha_src()}?time='+Math.random()"/>
+        </p>
+        <p><input type="button" onclick="login(this)" class="input-submit" value="登录"></p>
+    </form>
+</div>
+</body>
+
+<script>
+    function login(obj) {
+        ajax(obj, {
+            url: '{:url("admin/login/index")}'
+            , data: $('.mform').eq(0).serialize()
+            , success: function (data) {
+                console.log(data);
+                layer.msg(data.msg);
+                if (data.code == 1){
+                    window.location.href = '{:url("admin/index/index")}';
+                }
+            }
+        });
+    }
+</script>
+</html>

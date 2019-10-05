@@ -1,0 +1,36 @@
+*{
+    font-size: 14px;
+}
+div,ul{
+    padding: 0;
+    margin: 0;
+}
+ul{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+}
+
+.flex{
+    display: flex;
+}
+.block{
+    display: block;
+}
+.iblock{
+    display: inline-block;
+}
+
+
+.w100{
+    width: 100px;
+}
+.pointer{
+    cursor: pointer;
+}
+
+.container{
+    /*width: 960px;*/
+    margin: 10px auto;
+}

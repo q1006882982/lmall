@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {include file="public/_meta"}
+    <link rel="stylesheet" href="M_ADMIN_STATIC/css/index.css">
+    <title>index</title>
+</head>
+<body>
+<div class="container">
+    <div class="header">header</div>
+    <div class="menu">
+        <ul>
+            <li class="active">基础</li>
+            <li>o1</li>
+            <li>o2</li>
+        </ul>
+    </div>
+    <div class="sidebar">
+        <ul style="display: block;">
+            <li>
+                <a href="{:url('admin/index/welcome')}" target="in" class="active">欢迎</a>
+                <a href="{:url('admin/goods_class/index')}" target="in">商品分类</a>
+                <a href="{:url('admin/goods/index')}" target="in">商品管理</a>
+                <a href="{:url('admin/manage/index')}" target="in">管理员管理</a>
+            </li>
+        </ul>
+        <ul>
+            <li>
+                <a href="" target="in" class="active">o1li1</a>
+                <a href="" target="in">li1</a>
+                <a href="" target="in">li1</a>
+            </li>
+            <li>
+                <a href="" target="in">o1li2</a>
+                <a href="" target="in">li2</a>
+            </li>
+        </ul>
+        <ul>
+            <li>
+                <a href="" target="in" class="active">o2li1</a>
+                <a href="" target="in">li1</a>
+                <a href="" target="in">li1</a>
+            </li>
+            <li>
+                <a href="" target="in">o2li2</a>
+                <a href="" target="in">li2</a>
+            </li>
+        </ul>
+    </div>
+    <div class="main">
+        <iframe src="{:url('admin/index/welcome')}"
+                height="800"
+                scrolling="auto"
+                frameborder="0" name="in">
+        </iframe>
+    </div>
+    <div class="footer">footer</div>
+</div>
+</body>
+
+<script src="M_ADMIN_STATIC/js/index.js"></script>
+<script>
+    var $menu_li = $('.menu>ul>li');
+    var $sidebar_ul = $('.sidebar>ul');
+    var $sidebar_a = $('.sidebar>ul>li>a');
+    var $main = $('.main');
+    var $frame = $('.main iframe');
+
+    init();
+
+    function init(){
+        var all_width = $(window).width();
+        var sidebar_width = $('.sidebar').width();
+        var main_width = all_width-sidebar_width-30;
+        $main.width(main_width);
+        $frame.width(main_width);
+    }
+
+    $menu_li.on('click', function () {
+        active(this);
+        var index = $(this).index();
+        $sidebar_ul.hide();
+        $sidebar_ul.eq(index).show();
+        init();
+    });
+
+    $sidebar_a.on('click', function () {
+        active(this);
+    });
+</script>
+</html>
