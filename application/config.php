@@ -17,7 +17,7 @@ return [
     // 应用调试模式
     'app_debug'              => true,
     // 应用Trace
-    'app_trace'              => true,
+    'app_trace'              => false,
     // 应用模式状态
     'app_status'             => '',
     // 是否支持多模块
@@ -173,8 +173,14 @@ return [
         'type'  => 'File',
         // 日志保存目录
         'path'  => LOG_PATH,
+        //单个文件最大限制
+        'file_size'     =>2097152,
+        //日志文件最多个数
+        'max_files'	=> 30,
         // 日志记录级别
         'level' => [],
+        //单独生成error 和 sql两个类型的日志文件
+        'apart_level'   =>  ['error','sql']
     ],
 
     // +----------------------------------------------------------------------

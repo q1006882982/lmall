@@ -21,9 +21,9 @@
             <thead>
             <tr>
                 <th>id</th>
-                <th>username</th>
-                <th>group</th>
-                <th>login_time</th>
+                <th>name</th>
+                <th>pid</th>
+                <th>sort</th>
                 <th class="do">do</th>
             </tr>
             </thead>
@@ -31,9 +31,13 @@
             {foreach $all_data as $data}
             <tr>
                 <td>{$data.id}</td>
-                <td>{$data.name}</td>
-                <td>{$data.group_id}</td>
-                <td>{$data.login_time}</td>
+                <td>
+                    <!--循环显示出等级-->
+                    <!--|_-->
+                    {$data.xname}
+                </td>
+                <td>{$data.pid}</td>
+                <td>{$data.sort}</td>
                 <td>
                     <button type="button" class="button medit" data-id="{$data.id}">修改</button>
                     <button type="button" class="button mdel" data-id="{$data.id}">删除</button>
@@ -42,25 +46,25 @@
             {/foreach}
             </tbody>
         </table>
-        {$all_data->render()}
-        <!--<ul class="page">-->
-            <!--<li class="active"><a href="">1</a></li>-->
-            <!--<li><a href="">2</a></li>-->
-            <!--<li><a href="">3</a></li>-->
-        <!--</ul>-->
+        <ul class="page">
+            <li class="active"><a href="">1</a></li>
+            <li><a href="">2</a></li>
+            <li><a href="">3</a></li>
+        </ul>
     </div>
 </div>
 
 <script>
+    var view = 'goods_class';
     $('.madd').on('click', function () {
-        mform('{:url("admin/manage/form")}')
+        mform('{:url("admin/'+view+'/form")}');
     });
     $('.medit').on('click', function () {
-        mform('{:url("admin/manage/form")}', $(this).data('id'))
+        mform('{:url("admin/'+view+'/form")}', $(this).data('id'))
     });
     $('.mdel').on('click', function (){
         ajax(this, {
-            url: '{:url("admin/manage/del")}'
+            url: '{:url("admin/'+view+'/del")}'
             ,data: {id: $(this).data('id')}
             ,success: function (data){
                 console.log(data);

@@ -10,13 +10,18 @@
     <form action="" class="mform">
         <input type="text" name="id" value="{$one_data.id|default=0}">
         <p>
-            <span>username:</span>
+            <span>name:</span>
             <input type="text" name="name" class="input-text"
                    value="{$one_data.name|default=''}">
         </p>
         <p>
-            <span>group:</span>
-            <select name="group_id" class="input-select">
+            <span>sort:</span>
+            <input type="text" name="sort" class="input-text"
+                   value="{$one_data.sort|default=100}">
+        </p>
+        <p>
+            <span>pid:</span>
+            <select name="pid" class="input-select">
                 <option value="">pleace select</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
@@ -29,15 +34,16 @@
 </div>
 
 <script>
-    var group_id = '{$one_data.group_id|default=""}';
-    var $group_id = $('[name="group_id"]');
-    if (group_id != ''){
-        $group_id.val(group_id);
-    }
+    // var group_id = '{$one_data.group_id|default=""}';
+    // var $group_id = $('[name="group_id"]');
+    // if (group_id != ''){
+    //     $group_id.val(group_id);
+    // }
 
+    var view = 'goods_class';
     $('#save').on('click', function (){
         ajax(this, {
-            url: '{:url("admin/manage/save")}'
+            url: '{:url("admin/'+view+'/save")}'
             ,data: $('.mform').eq(0).serialize()
             ,success: function (data){
                 console.log(data);

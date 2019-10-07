@@ -8,6 +8,29 @@ function active(obj){
     $this.addClass('active');
 }
 
+function mform(url, id=0){
+    var frame_w = parent.$('.main').width() || $(window).width();
+    var frame_h = parent.$('.main').height() || $(window).height();
+    console.log(frame_w);
+    console.log(frame_h);
+    var suffix = '';
+    var title = '添加';
+    if (id){
+        suffix = '?id='+id;
+        title = '修改';
+    }
+    var content_url = url+ suffix;
+    layer.open({
+        type: 2
+        ,title: title
+        ,content: content_url
+        ,maxmin : true
+        ,area: [frame_w, frame_h]
+        // ,area: [900, 800]
+        ,offset: 't'
+    })
+}
+
 function ajax(obj, param){
     var $that = $(obj);
     var layer_index = layer.load();
